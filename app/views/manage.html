@@ -1,0 +1,20 @@
+<div ng-show="mode == 'show-timelines'">
+  <div ng-include="'views/timeline-partials/show.html'"></div>
+</div>
+
+<div ng-show="mode == 'create-timeline'">
+  <div ng-include="'views/timeline-partials/create.html'"></div>
+</div>
+
+<div ng-show="mode == 'edit-timeline'">
+  <div ng-include="'views/timeline-partials/edit.html'"></div>
+</div>
+
+
+<div ng-show="mode == 'create-event'">
+  <div ng-include="'views/event-partials/create.html'"></div>
+</div>
+
+<div ng-show="mode == 'edit-event'">
+  <div ng-include="'views/event-partials/edit.html'"></div>
+</div>

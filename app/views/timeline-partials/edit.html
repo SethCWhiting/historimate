@@ -1,0 +1,42 @@
+<div class="text-center">
+  <h1>Editing {{selectedTimeline.title}}</h1>
+  <p>Change the title, edit events, or add new events.</p>
+  <hr>
+</div>
+
+<form>
+
+  <div class="row">
+    <div class="form-group col-sm-6 col-sm-offset-3">
+      <label>Title</label>
+      <input type="text" class="form-control" ng-model="selectedTimeline.title" placeholder="Title" />
+    </div>
+  </div>
+  <hr>
+
+  <a class="btn btn-success pull-right" ng-click="newEvent()">
+    <span class="glyphicon glyphicon-plus"></span> New Event
+  </a>
+
+
+  <table class="table table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Event Date</th>
+        <th>Created</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="event in events">
+        <td><a ng-click="editEvent(event)">{{event.title}}</a></td>
+        <td><a ng-click="editEvent(event)">{{event.date | date:'MM/dd/yyyy'}}</a></td>
+        <td><a ng-click="editEvent(event)">{{event.createdAt | date:'MM/dd/yyyy'}}</a></td>
+      </tr>
+    </tbody>
+  </table>
+  <button class="btn btn-default" ng-click="goHome()">Cancel</button>
+  <button class="btn btn-success" ng-click="updateTimeline()">Submit</button>
+  <hr>
+  <button class="btn btn-danger pull-right" ng-click="deleteTimeline()">Delete</button>
+</form>

@@ -1,0 +1,32 @@
+<div class="text-center">
+  <h1>Editing {{selectedEvent.title}}</h1>
+  <h3>On {{selectedTimeline.title}}</h3>
+  <hr>
+</div>
+
+<form>
+
+  <div class="row">
+    <div class="form-group col-sm-6 col-sm-offset-3">
+      <label>Title</label>
+      <input type="text" class="form-control" ng-model="selectedEvent.title" placeholder="Title" />
+    </div>
+    <div class="form-group col-sm-6 col-sm-offset-3">
+      <label>Date</label>
+      <input type="text" class="form-control" ng-model="selectedEvent.date" placeholder="Date" />
+    </div>
+    <div class="form-group col-sm-6 col-sm-offset-3">
+      <label>Location</label>
+      <input type="text" class="form-control" ng-model="selectedEvent.location" placeholder="Location" />
+    </div>
+    <div class="form-group col-sm-6 col-sm-offset-3">
+      <label>Source</label>
+      <input type="text" class="form-control" ng-model="selectedEvent.source" placeholder="Source" />
+    </div>
+  </div>
+  <button class="btn btn-default" ng-click="goHome()">Cancel</button>
+  <button class="btn btn-success" ng-click="updateEvent()">Submit</button>
+  <hr>
+  <button class="btn btn-danger pull-right" ng-click="deleteEvent()">Delete</button>
+
+</form>

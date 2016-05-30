@@ -1,0 +1,24 @@
+<div class="text-center">
+  <h1>Timelines</h1>
+  <p>Select a timeline to edit, or create a new timeline.</p>
+  <hr>
+</div>
+
+<a class="btn btn-success pull-right" ng-click="newTimeline()">
+  <span class="glyphicon glyphicon-plus"></span> New Timeline
+</a>
+
+<table class="table table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Created</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="timeline in timelines">
+      <td><a ng-click="editTimeline(timeline)">{{timeline.title}}</a></td>
+      <td><a ng-click="editTimeline(timeline)">{{timeline.createdAt | date:'MM/dd/yyyy'}}</a></td>
+    </tr>
+  </tbody>
+</table>
