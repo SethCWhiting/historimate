@@ -34,4 +34,11 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  });
+  }).run(function ($rootScope, $location, $window, $cookieStore) {
+    $rootScope.$on( '$locationChangeStart', function() {
+      var token = $cookieStore.get('token');
+      if(token === undefined || token.length < 10){
+        $location.path('/login');
+      }
+    });
+});

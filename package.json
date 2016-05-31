@@ -32,5 +32,11 @@
   },
   "engines": {
     "node": ">=0.10.0"
+  },
+  "dependencies": {
+    "cors": "^2.7.1",
+    "ejs": "^2.4.2",
+    "express-jwt": "^3.4.0",
+    "mongodb": "^2.1.21"
   }
 }

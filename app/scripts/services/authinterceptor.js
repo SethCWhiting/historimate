@@ -11,9 +11,11 @@ angular.module('historimateApp')
   .factory('authInterceptor', function ($rootScope, $q, $window, $cookieStore) {
     return {
       request: function (config) {
-        config.headers = config.headers || {};
-        if ($cookieStore.get('token')) {
-          config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+        if(config.url.substring(0, 5) === '/api/') {
+          config.headers = config.headers || {};
+          if ($cookieStore.get('token')) {
+            config.headers.Authorization = 'Bearer ' + $cookieStore.get('token');
+          }
         }
         return config;
       },
