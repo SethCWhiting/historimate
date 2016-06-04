@@ -20,13 +20,6 @@ angular.module('historimateApp')
 
     $http.get('/api/timelines').success(function(res) {
       $scope.timelines = res;
-      locations.getLocations().then(function(data) {
-        console.log(data);
-      });
-    }).error(function() {
-      locations.getLocations().then(function(data) {
-        console.log(data);
-      });
     });
 
     $scope.selectedTimeline = {};
@@ -85,12 +78,24 @@ angular.module('historimateApp')
     };
 
     $scope.getLocations = function() {
-      locations.getLocations();
+      if ($scope.singleEvent.location) {
+        locations.getLocations($scope.singleEvent.location).then(function(res) {
+          $scope.eventLocations = res.data.results;
+        });
+      } else {
+        $scope.eventLocations = '';
+      }
+    };
+
+    $scope.setLoc = function(loc) {
+      $scope.singleEvent.location = loc;
+      $scope.eventLocations = '';
     };
 
     $scope.editEvent = function(ev) {
       $scope.mode = 'edit-event';
       $scope.selectedEvent = ev;
+      $scope.selectedEvent.date = new Date(ev.date);
     };
 
     $scope.newEvent = function() {
@@ -106,11 +111,10 @@ angular.module('historimateApp')
       $scope.singleCorrelation.creator = $cookieStore.get('userID');
       $http.post('/api/events', $scope.singleEvent).then(
         function(res) {
-          console.log($scope.singleCorrelation.timeline);
           $scope.singleCorrelation.event = res.data;
           $http.post('/api/correlations', $scope.singleCorrelation).then(
             function(res) {
-              console.log(res);
+              return res;
             },
             function(err) {
               console.log(err);

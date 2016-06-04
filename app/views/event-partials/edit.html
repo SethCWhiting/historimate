@@ -13,11 +13,18 @@
     </div>
     <div class="form-group col-sm-6 col-sm-offset-3">
       <label>Date</label>
-      <input type="text" class="form-control" ng-model="selectedEvent.date" placeholder="Date" />
+      <input type="date" class="form-control" ng-model="selectedEvent.date" placeholder="Date" />
     </div>
     <div class="form-group col-sm-6 col-sm-offset-3">
       <label>Location</label>
-      <input type="text" class="form-control" ng-model="selectedEvent.location" placeholder="Location" />
+      <input type="text" class="form-control" ng-model="selectedEvent.location" ng-change="getLocations()" placeholder="Location" />
+      <table class="list-unstyled table table-striped table-hover">
+        <tr ng-repeat = "loc in eventLocations">
+          <td>
+            <a ng-click="setLoc(loc.formatted_address)">{{loc.formatted_address}}</a>
+          </td>
+        </tr>
+      </table>
     </div>
     <div class="form-group col-sm-6 col-sm-offset-3">
       <label>Source</label>

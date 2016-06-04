@@ -3,7 +3,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-td a {
-  display: block;
-  cursor: pointer;
+td,
+li {
+  a {
+    display: block;
+    cursor: pointer;
+  }
 }
